@@ -1,0 +1,37 @@
+﻿
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+}
+
+<ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#primeiraTab">Visualizar</a></li>
+    <li class="active"><a data-toggle="tab" href="#segundaTab">Adicionar</a></li>
+</ul>
+<div class="tab-content">
+    <div id="primeiraTab" class="tab-pane fade in">@Html.Action("ViewAll")</div>
+    <div id="segundaTab" class="tab-pane fade in active">@Html.Action("AddOrEdit")</div>
+</div>
+
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet"/>
+
+<!--script para validar os campos que sao obrigatorios, como sigla e nome-->
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        function ativarTabelaJQuery() {
+            $("#tabelaEquipe").DataTable();
+        }
+        $(function () {
+            ativarTabelaJQuery();
+        })
+
+    </script>
+}
+
+
+

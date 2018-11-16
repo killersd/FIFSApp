@@ -1,0 +1,1026 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FormulaIFSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Campeonato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="TipoCampeonato" Type="int" Nullable="false" />
+          <Property Name="QtdVencedor" Type="int" Nullable="false" />
+          <Property Name="DataInicio" Type="datetime" Nullable="false" />
+          <Property Name="DataFim" Type="datetime" Nullable="false" />
+          <Property Name="EhPublico" Type="bit" Nullable="false" />
+          <Property Name="SituacaoCampeonato" Type="int" Nullable="false" />
+          <Property Name="Categoria_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Carro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="Tag_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Ativa" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Circuito">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sigla" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Tamanho" Type="int" Nullable="false" />
+          <Property Name="Complexidade" Type="int" Nullable="false" />
+          <Property Name="Imagem" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="CircuitoCampeonato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TempoMaximoParaConclusao" Type="bigint" Nullable="false" />
+          <Property Name="TentativasTreino" Type="int" />
+          <Property Name="TentativasDisputa" Type="int" />
+          <Property Name="NumeroVoltasTreino" Type="int" />
+          <Property Name="NumeroVoltasDisputa" Type="int" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Campeonato_Id" Type="int" />
+          <Property Name="Circuito_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="CircuitoCampeonato1">
+          <Key>
+            <PropertyRef Name="Circuito_Id" />
+            <PropertyRef Name="Campeonato_Id" />
+          </Key>
+          <Property Name="Circuito_Id" Type="int" Nullable="false" />
+          <Property Name="Campeonato_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sigla" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Situacao" Type="int" Nullable="false" />
+          <Property Name="Imagem" Type="nvarchar(max)" />
+          <Property Name="Carro_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="EquipeCampeonato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Campeonato_Id" Type="int" />
+          <Property Name="Equipe_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="EtiquetaTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Serial" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MembroCampeonato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Campeonato_Id" Type="int" />
+          <Property Name="Usuario_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="RegistroDisputa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataRegistro" Type="datetime" Nullable="false" />
+          <Property Name="EhTreino" Type="bit" Nullable="false" />
+          <Property Name="Sequencial" Type="int" Nullable="false" />
+          <Property Name="Tempo" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CircuitoCampeonato_Id" Type="int" Nullable="false" />
+          <Property Name="EquipeCampeonato_Id" Type="int" />
+          <Property Name="Usuario_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vinculo" Type="tinyint" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuarioEquipe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataEntrada" Type="datetime" Nullable="false" />
+          <Property Name="Equipe_Id" Type="int" />
+          <Property Name="Usuario_Id" Type="int" />
+        </EntityType>
+        <Association Name="FK_dbo_Campeonato_dbo_Categoria_Categoria_Id">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Campeonato" Type="Self.Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campeonato">
+              <PropertyRef Name="Categoria_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Carro_dbo_EtiquetaTag_Tag_Id">
+          <End Role="EtiquetaTag" Type="Self.EtiquetaTag" Multiplicity="0..1" />
+          <End Role="Carro" Type="Self.Carro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EtiquetaTag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Carro">
+              <PropertyRef Name="Tag_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CircuitoCampeonato_dbo_Campeonato_Campeonato_Id">
+          <End Role="Campeonato" Type="Self.Campeonato" Multiplicity="0..1" />
+          <End Role="CircuitoCampeonato" Type="Self.CircuitoCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CircuitoCampeonato">
+              <PropertyRef Name="Campeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CircuitoCampeonato_dbo_Circuito_Circuito_Id">
+          <End Role="Circuito" Type="Self.Circuito" Multiplicity="0..1" />
+          <End Role="CircuitoCampeonato" Type="Self.CircuitoCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Circuito">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CircuitoCampeonato">
+              <PropertyRef Name="Circuito_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CircuitoCampeonato1_dbo_Campeonato_Campeonato_Id">
+          <End Role="Campeonato" Type="Self.Campeonato" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CircuitoCampeonato1" Type="Self.CircuitoCampeonato1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CircuitoCampeonato1">
+              <PropertyRef Name="Campeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CircuitoCampeonato1_dbo_Circuito_Circuito_Id">
+          <End Role="Circuito" Type="Self.Circuito" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CircuitoCampeonato1" Type="Self.CircuitoCampeonato1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Circuito">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CircuitoCampeonato1">
+              <PropertyRef Name="Circuito_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Equipe_dbo_Carro_Carro_Id">
+          <End Role="Carro" Type="Self.Carro" Multiplicity="0..1" />
+          <End Role="Equipe" Type="Self.Equipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carro">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipe">
+              <PropertyRef Name="Carro_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EquipeCampeonato_dbo_Campeonato_Campeonato_Id">
+          <End Role="Campeonato" Type="Self.Campeonato" Multiplicity="0..1" />
+          <End Role="EquipeCampeonato" Type="Self.EquipeCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipeCampeonato">
+              <PropertyRef Name="Campeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EquipeCampeonato_dbo_Equipe_Equipe_Id">
+          <End Role="Equipe" Type="Self.Equipe" Multiplicity="0..1" />
+          <End Role="EquipeCampeonato" Type="Self.EquipeCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipeCampeonato">
+              <PropertyRef Name="Equipe_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MembroCampeonato_dbo_Campeonato_Campeonato_Id">
+          <End Role="Campeonato" Type="Self.Campeonato" Multiplicity="0..1" />
+          <End Role="MembroCampeonato" Type="Self.MembroCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembroCampeonato">
+              <PropertyRef Name="Campeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MembroCampeonato_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="MembroCampeonato" Type="Self.MembroCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembroCampeonato">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegistroDisputa_dbo_CircuitoCampeonato_CircuitoCampeonato_Id">
+          <End Role="CircuitoCampeonato" Type="Self.CircuitoCampeonato" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RegistroDisputa" Type="Self.RegistroDisputa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CircuitoCampeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroDisputa">
+              <PropertyRef Name="CircuitoCampeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegistroDisputa_dbo_EquipeCampeonato_EquipeCampeonato_Id">
+          <End Role="EquipeCampeonato" Type="Self.EquipeCampeonato" Multiplicity="0..1" />
+          <End Role="RegistroDisputa" Type="Self.RegistroDisputa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipeCampeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroDisputa">
+              <PropertyRef Name="EquipeCampeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegistroDisputa_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="RegistroDisputa" Type="Self.RegistroDisputa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroDisputa">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UsuarioEquipe_dbo_Equipe_Equipe_Id">
+          <End Role="Equipe" Type="Self.Equipe" Multiplicity="0..1" />
+          <End Role="UsuarioEquipe" Type="Self.UsuarioEquipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsuarioEquipe">
+              <PropertyRef Name="Equipe_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UsuarioEquipe_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="UsuarioEquipe" Type="Self.UsuarioEquipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsuarioEquipe">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FormulaIFSModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Campeonato" EntityType="Self.Campeonato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carro" EntityType="Self.Carro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Circuito" EntityType="Self.Circuito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CircuitoCampeonato" EntityType="Self.CircuitoCampeonato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CircuitoCampeonato1" EntityType="Self.CircuitoCampeonato1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipe" EntityType="Self.Equipe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipeCampeonato" EntityType="Self.EquipeCampeonato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EtiquetaTag" EntityType="Self.EtiquetaTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MembroCampeonato" EntityType="Self.MembroCampeonato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroDisputa" EntityType="Self.RegistroDisputa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioEquipe" EntityType="Self.UsuarioEquipe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Campeonato_dbo_Categoria_Categoria_Id" Association="Self.FK_dbo_Campeonato_dbo_Categoria_Categoria_Id">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Campeonato" EntitySet="Campeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Carro_dbo_EtiquetaTag_Tag_Id" Association="Self.FK_dbo_Carro_dbo_EtiquetaTag_Tag_Id">
+            <End Role="EtiquetaTag" EntitySet="EtiquetaTag" />
+            <End Role="Carro" EntitySet="Carro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CircuitoCampeonato_dbo_Campeonato_Campeonato_Id" Association="Self.FK_dbo_CircuitoCampeonato_dbo_Campeonato_Campeonato_Id">
+            <End Role="Campeonato" EntitySet="Campeonato" />
+            <End Role="CircuitoCampeonato" EntitySet="CircuitoCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CircuitoCampeonato_dbo_Circuito_Circuito_Id" Association="Self.FK_dbo_CircuitoCampeonato_dbo_Circuito_Circuito_Id">
+            <End Role="Circuito" EntitySet="Circuito" />
+            <End Role="CircuitoCampeonato" EntitySet="CircuitoCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CircuitoCampeonato1_dbo_Campeonato_Campeonato_Id" Association="Self.FK_dbo_CircuitoCampeonato1_dbo_Campeonato_Campeonato_Id">
+            <End Role="Campeonato" EntitySet="Campeonato" />
+            <End Role="CircuitoCampeonato1" EntitySet="CircuitoCampeonato1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CircuitoCampeonato1_dbo_Circuito_Circuito_Id" Association="Self.FK_dbo_CircuitoCampeonato1_dbo_Circuito_Circuito_Id">
+            <End Role="Circuito" EntitySet="Circuito" />
+            <End Role="CircuitoCampeonato1" EntitySet="CircuitoCampeonato1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Equipe_dbo_Carro_Carro_Id" Association="Self.FK_dbo_Equipe_dbo_Carro_Carro_Id">
+            <End Role="Carro" EntitySet="Carro" />
+            <End Role="Equipe" EntitySet="Equipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EquipeCampeonato_dbo_Campeonato_Campeonato_Id" Association="Self.FK_dbo_EquipeCampeonato_dbo_Campeonato_Campeonato_Id">
+            <End Role="Campeonato" EntitySet="Campeonato" />
+            <End Role="EquipeCampeonato" EntitySet="EquipeCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EquipeCampeonato_dbo_Equipe_Equipe_Id" Association="Self.FK_dbo_EquipeCampeonato_dbo_Equipe_Equipe_Id">
+            <End Role="Equipe" EntitySet="Equipe" />
+            <End Role="EquipeCampeonato" EntitySet="EquipeCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MembroCampeonato_dbo_Campeonato_Campeonato_Id" Association="Self.FK_dbo_MembroCampeonato_dbo_Campeonato_Campeonato_Id">
+            <End Role="Campeonato" EntitySet="Campeonato" />
+            <End Role="MembroCampeonato" EntitySet="MembroCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MembroCampeonato_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_MembroCampeonato_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="MembroCampeonato" EntitySet="MembroCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegistroDisputa_dbo_CircuitoCampeonato_CircuitoCampeonato_Id" Association="Self.FK_dbo_RegistroDisputa_dbo_CircuitoCampeonato_CircuitoCampeonato_Id">
+            <End Role="CircuitoCampeonato" EntitySet="CircuitoCampeonato" />
+            <End Role="RegistroDisputa" EntitySet="RegistroDisputa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegistroDisputa_dbo_EquipeCampeonato_EquipeCampeonato_Id" Association="Self.FK_dbo_RegistroDisputa_dbo_EquipeCampeonato_EquipeCampeonato_Id">
+            <End Role="EquipeCampeonato" EntitySet="EquipeCampeonato" />
+            <End Role="RegistroDisputa" EntitySet="RegistroDisputa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegistroDisputa_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_RegistroDisputa_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="RegistroDisputa" EntitySet="RegistroDisputa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UsuarioEquipe_dbo_Equipe_Equipe_Id" Association="Self.FK_dbo_UsuarioEquipe_dbo_Equipe_Equipe_Id">
+            <End Role="Equipe" EntitySet="Equipe" />
+            <End Role="UsuarioEquipe" EntitySet="UsuarioEquipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UsuarioEquipe_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_UsuarioEquipe_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioEquipe" EntitySet="UsuarioEquipe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FormulaIFSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Campeonato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoCampeonato" Type="Int32" Nullable="false" />
+          <Property Name="QtdVencedor" Type="Int32" Nullable="false" />
+          <Property Name="DataInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataFim" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EhPublico" Type="Boolean" Nullable="false" />
+          <Property Name="SituacaoCampeonato" Type="Int32" Nullable="false" />
+          <Property Name="Categoria_Id" Type="Int32" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_dbo_Campeonato_dbo_Categoria_Categoria_Id" FromRole="Campeonato" ToRole="Categoria" />
+          <NavigationProperty Name="CircuitoCampeonato" Relationship="Self.FK_dbo_CircuitoCampeonato_dbo_Campeonato_Campeonato_Id" FromRole="Campeonato" ToRole="CircuitoCampeonato" />
+          <NavigationProperty Name="EquipeCampeonato" Relationship="Self.FK_dbo_EquipeCampeonato_dbo_Campeonato_Campeonato_Id" FromRole="Campeonato" ToRole="EquipeCampeonato" />
+          <NavigationProperty Name="MembroCampeonato" Relationship="Self.FK_dbo_MembroCampeonato_dbo_Campeonato_Campeonato_Id" FromRole="Campeonato" ToRole="MembroCampeonato" />
+          <NavigationProperty Name="Circuito" Relationship="Self.CircuitoCampeonato1" FromRole="Campeonato" ToRole="Circuito" />
+        </EntityType>
+        <EntityType Name="Carro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="Tag_Id" Type="Int32" />
+          <NavigationProperty Name="EtiquetaTag" Relationship="Self.FK_dbo_Carro_dbo_EtiquetaTag_Tag_Id" FromRole="Carro" ToRole="EtiquetaTag" />
+          <NavigationProperty Name="Equipe" Relationship="Self.FK_dbo_Equipe_dbo_Carro_Carro_Id" FromRole="Carro" ToRole="Equipe" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ativa" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Campeonato" Relationship="Self.FK_dbo_Campeonato_dbo_Categoria_Categoria_Id" FromRole="Categoria" ToRole="Campeonato" />
+        </EntityType>
+        <EntityType Name="Circuito">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sigla" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tamanho" Type="Int32" Nullable="false" />
+          <Property Name="Complexidade" Type="Int32" Nullable="false" />
+          <Property Name="Imagem" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="CircuitoCampeonato" Relationship="Self.FK_dbo_CircuitoCampeonato_dbo_Circuito_Circuito_Id" FromRole="Circuito" ToRole="CircuitoCampeonato" />
+          <NavigationProperty Name="Campeonato" Relationship="Self.CircuitoCampeonato1" FromRole="Circuito" ToRole="Campeonato" />
+        </EntityType>
+        <EntityType Name="CircuitoCampeonato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TempoMaximoParaConclusao" Type="Int64" Nullable="false" />
+          <Property Name="TentativasTreino" Type="Int32" />
+          <Property Name="TentativasDisputa" Type="Int32" />
+          <Property Name="NumeroVoltasTreino" Type="Int32" />
+          <Property Name="NumeroVoltasDisputa" Type="Int32" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Campeonato_Id" Type="Int32" />
+          <Property Name="Circuito_Id" Type="Int32" />
+          <NavigationProperty Name="Campeonato" Relationship="Self.FK_dbo_CircuitoCampeonato_dbo_Campeonato_Campeonato_Id" FromRole="CircuitoCampeonato" ToRole="Campeonato" />
+          <NavigationProperty Name="Circuito" Relationship="Self.FK_dbo_CircuitoCampeonato_dbo_Circuito_Circuito_Id" FromRole="CircuitoCampeonato" ToRole="Circuito" />
+          <NavigationProperty Name="RegistroDisputa" Relationship="Self.FK_dbo_RegistroDisputa_dbo_CircuitoCampeonato_CircuitoCampeonato_Id" FromRole="CircuitoCampeonato" ToRole="RegistroDisputa" />
+        </EntityType>
+        <EntityType Name="Equipe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sigla" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Situacao" Type="Int32" Nullable="false" />
+          <Property Name="Imagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Carro_Id" Type="Int32" />
+          <NavigationProperty Name="Carro" Relationship="Self.FK_dbo_Equipe_dbo_Carro_Carro_Id" FromRole="Equipe" ToRole="Carro" />
+          <NavigationProperty Name="EquipeCampeonato" Relationship="Self.FK_dbo_EquipeCampeonato_dbo_Equipe_Equipe_Id" FromRole="Equipe" ToRole="EquipeCampeonato" />
+          <NavigationProperty Name="UsuarioEquipe" Relationship="Self.FK_dbo_UsuarioEquipe_dbo_Equipe_Equipe_Id" FromRole="Equipe" ToRole="UsuarioEquipe" />
+        </EntityType>
+        <EntityType Name="EquipeCampeonato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Campeonato_Id" Type="Int32" />
+          <Property Name="Equipe_Id" Type="Int32" />
+          <NavigationProperty Name="Campeonato" Relationship="Self.FK_dbo_EquipeCampeonato_dbo_Campeonato_Campeonato_Id" FromRole="EquipeCampeonato" ToRole="Campeonato" />
+          <NavigationProperty Name="Equipe" Relationship="Self.FK_dbo_EquipeCampeonato_dbo_Equipe_Equipe_Id" FromRole="EquipeCampeonato" ToRole="Equipe" />
+          <NavigationProperty Name="RegistroDisputa" Relationship="Self.FK_dbo_RegistroDisputa_dbo_EquipeCampeonato_EquipeCampeonato_Id" FromRole="EquipeCampeonato" ToRole="RegistroDisputa" />
+        </EntityType>
+        <EntityType Name="EtiquetaTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Serial" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Carro" Relationship="Self.FK_dbo_Carro_dbo_EtiquetaTag_Tag_Id" FromRole="EtiquetaTag" ToRole="Carro" />
+        </EntityType>
+        <EntityType Name="MembroCampeonato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Campeonato_Id" Type="Int32" />
+          <Property Name="Usuario_Id" Type="Int32" />
+          <NavigationProperty Name="Campeonato" Relationship="Self.FK_dbo_MembroCampeonato_dbo_Campeonato_Campeonato_Id" FromRole="MembroCampeonato" ToRole="Campeonato" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_MembroCampeonato_dbo_Usuario_Usuario_Id" FromRole="MembroCampeonato" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="RegistroDisputa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EhTreino" Type="Boolean" Nullable="false" />
+          <Property Name="Sequencial" Type="Int32" Nullable="false" />
+          <Property Name="Tempo" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CircuitoCampeonato_Id" Type="Int32" Nullable="false" />
+          <Property Name="EquipeCampeonato_Id" Type="Int32" />
+          <Property Name="Usuario_Id" Type="Int32" />
+          <NavigationProperty Name="CircuitoCampeonato" Relationship="Self.FK_dbo_RegistroDisputa_dbo_CircuitoCampeonato_CircuitoCampeonato_Id" FromRole="RegistroDisputa" ToRole="CircuitoCampeonato" />
+          <NavigationProperty Name="EquipeCampeonato" Relationship="Self.FK_dbo_RegistroDisputa_dbo_EquipeCampeonato_EquipeCampeonato_Id" FromRole="RegistroDisputa" ToRole="EquipeCampeonato" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_RegistroDisputa_dbo_Usuario_Usuario_Id" FromRole="RegistroDisputa" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vinculo" Type="Byte" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MembroCampeonato" Relationship="Self.FK_dbo_MembroCampeonato_dbo_Usuario_Usuario_Id" FromRole="Usuario" ToRole="MembroCampeonato" />
+          <NavigationProperty Name="RegistroDisputa" Relationship="Self.FK_dbo_RegistroDisputa_dbo_Usuario_Usuario_Id" FromRole="Usuario" ToRole="RegistroDisputa" />
+          <NavigationProperty Name="UsuarioEquipe" Relationship="Self.FK_dbo_UsuarioEquipe_dbo_Usuario_Usuario_Id" FromRole="Usuario" ToRole="UsuarioEquipe" />
+        </EntityType>
+        <EntityType Name="UsuarioEquipe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataEntrada" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Equipe_Id" Type="Int32" />
+          <Property Name="Usuario_Id" Type="Int32" />
+          <NavigationProperty Name="Equipe" Relationship="Self.FK_dbo_UsuarioEquipe_dbo_Equipe_Equipe_Id" FromRole="UsuarioEquipe" ToRole="Equipe" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_dbo_UsuarioEquipe_dbo_Usuario_Usuario_Id" FromRole="UsuarioEquipe" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_dbo_Campeonato_dbo_Categoria_Categoria_Id">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Campeonato" Type="Self.Campeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Campeonato">
+              <PropertyRef Name="Categoria_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CircuitoCampeonato_dbo_Campeonato_Campeonato_Id">
+          <End Role="Campeonato" Type="Self.Campeonato" Multiplicity="0..1" />
+          <End Role="CircuitoCampeonato" Type="Self.CircuitoCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CircuitoCampeonato">
+              <PropertyRef Name="Campeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EquipeCampeonato_dbo_Campeonato_Campeonato_Id">
+          <End Role="Campeonato" Type="Self.Campeonato" Multiplicity="0..1" />
+          <End Role="EquipeCampeonato" Type="Self.EquipeCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipeCampeonato">
+              <PropertyRef Name="Campeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MembroCampeonato_dbo_Campeonato_Campeonato_Id">
+          <End Role="Campeonato" Type="Self.Campeonato" Multiplicity="0..1" />
+          <End Role="MembroCampeonato" Type="Self.MembroCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembroCampeonato">
+              <PropertyRef Name="Campeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Carro_dbo_EtiquetaTag_Tag_Id">
+          <End Role="EtiquetaTag" Type="Self.EtiquetaTag" Multiplicity="0..1" />
+          <End Role="Carro" Type="Self.Carro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EtiquetaTag">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Carro">
+              <PropertyRef Name="Tag_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Equipe_dbo_Carro_Carro_Id">
+          <End Role="Carro" Type="Self.Carro" Multiplicity="0..1" />
+          <End Role="Equipe" Type="Self.Equipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carro">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipe">
+              <PropertyRef Name="Carro_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CircuitoCampeonato_dbo_Circuito_Circuito_Id">
+          <End Role="Circuito" Type="Self.Circuito" Multiplicity="0..1" />
+          <End Role="CircuitoCampeonato" Type="Self.CircuitoCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Circuito">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CircuitoCampeonato">
+              <PropertyRef Name="Circuito_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegistroDisputa_dbo_CircuitoCampeonato_CircuitoCampeonato_Id">
+          <End Role="CircuitoCampeonato" Type="Self.CircuitoCampeonato" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RegistroDisputa" Type="Self.RegistroDisputa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CircuitoCampeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroDisputa">
+              <PropertyRef Name="CircuitoCampeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EquipeCampeonato_dbo_Equipe_Equipe_Id">
+          <End Role="Equipe" Type="Self.Equipe" Multiplicity="0..1" />
+          <End Role="EquipeCampeonato" Type="Self.EquipeCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EquipeCampeonato">
+              <PropertyRef Name="Equipe_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UsuarioEquipe_dbo_Equipe_Equipe_Id">
+          <End Role="Equipe" Type="Self.Equipe" Multiplicity="0..1" />
+          <End Role="UsuarioEquipe" Type="Self.UsuarioEquipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipe">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsuarioEquipe">
+              <PropertyRef Name="Equipe_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegistroDisputa_dbo_EquipeCampeonato_EquipeCampeonato_Id">
+          <End Role="EquipeCampeonato" Type="Self.EquipeCampeonato" Multiplicity="0..1" />
+          <End Role="RegistroDisputa" Type="Self.RegistroDisputa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipeCampeonato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroDisputa">
+              <PropertyRef Name="EquipeCampeonato_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_MembroCampeonato_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="MembroCampeonato" Type="Self.MembroCampeonato" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MembroCampeonato">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegistroDisputa_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="RegistroDisputa" Type="Self.RegistroDisputa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroDisputa">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UsuarioEquipe_dbo_Usuario_Usuario_Id">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="UsuarioEquipe" Type="Self.UsuarioEquipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsuarioEquipe">
+              <PropertyRef Name="Usuario_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CircuitoCampeonato1">
+          <End Role="Campeonato" Type="Self.Campeonato" Multiplicity="*" />
+          <End Role="Circuito" Type="Self.Circuito" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Campeonato" EntityType="Self.Campeonato" />
+          <EntitySet Name="Carro" EntityType="Self.Carro" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Circuito" EntityType="Self.Circuito" />
+          <EntitySet Name="CircuitoCampeonato" EntityType="Self.CircuitoCampeonato" />
+          <EntitySet Name="Equipe" EntityType="Self.Equipe" />
+          <EntitySet Name="EquipeCampeonato" EntityType="Self.EquipeCampeonato" />
+          <EntitySet Name="EtiquetaTag" EntityType="Self.EtiquetaTag" />
+          <EntitySet Name="MembroCampeonato" EntityType="Self.MembroCampeonato" />
+          <EntitySet Name="RegistroDisputa" EntityType="Self.RegistroDisputa" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="UsuarioEquipe" EntityType="Self.UsuarioEquipe" />
+          <AssociationSet Name="FK_dbo_Campeonato_dbo_Categoria_Categoria_Id" Association="Self.FK_dbo_Campeonato_dbo_Categoria_Categoria_Id">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Campeonato" EntitySet="Campeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CircuitoCampeonato_dbo_Campeonato_Campeonato_Id" Association="Self.FK_dbo_CircuitoCampeonato_dbo_Campeonato_Campeonato_Id">
+            <End Role="Campeonato" EntitySet="Campeonato" />
+            <End Role="CircuitoCampeonato" EntitySet="CircuitoCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EquipeCampeonato_dbo_Campeonato_Campeonato_Id" Association="Self.FK_dbo_EquipeCampeonato_dbo_Campeonato_Campeonato_Id">
+            <End Role="Campeonato" EntitySet="Campeonato" />
+            <End Role="EquipeCampeonato" EntitySet="EquipeCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MembroCampeonato_dbo_Campeonato_Campeonato_Id" Association="Self.FK_dbo_MembroCampeonato_dbo_Campeonato_Campeonato_Id">
+            <End Role="Campeonato" EntitySet="Campeonato" />
+            <End Role="MembroCampeonato" EntitySet="MembroCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Carro_dbo_EtiquetaTag_Tag_Id" Association="Self.FK_dbo_Carro_dbo_EtiquetaTag_Tag_Id">
+            <End Role="EtiquetaTag" EntitySet="EtiquetaTag" />
+            <End Role="Carro" EntitySet="Carro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Equipe_dbo_Carro_Carro_Id" Association="Self.FK_dbo_Equipe_dbo_Carro_Carro_Id">
+            <End Role="Carro" EntitySet="Carro" />
+            <End Role="Equipe" EntitySet="Equipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CircuitoCampeonato_dbo_Circuito_Circuito_Id" Association="Self.FK_dbo_CircuitoCampeonato_dbo_Circuito_Circuito_Id">
+            <End Role="Circuito" EntitySet="Circuito" />
+            <End Role="CircuitoCampeonato" EntitySet="CircuitoCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegistroDisputa_dbo_CircuitoCampeonato_CircuitoCampeonato_Id" Association="Self.FK_dbo_RegistroDisputa_dbo_CircuitoCampeonato_CircuitoCampeonato_Id">
+            <End Role="CircuitoCampeonato" EntitySet="CircuitoCampeonato" />
+            <End Role="RegistroDisputa" EntitySet="RegistroDisputa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EquipeCampeonato_dbo_Equipe_Equipe_Id" Association="Self.FK_dbo_EquipeCampeonato_dbo_Equipe_Equipe_Id">
+            <End Role="Equipe" EntitySet="Equipe" />
+            <End Role="EquipeCampeonato" EntitySet="EquipeCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UsuarioEquipe_dbo_Equipe_Equipe_Id" Association="Self.FK_dbo_UsuarioEquipe_dbo_Equipe_Equipe_Id">
+            <End Role="Equipe" EntitySet="Equipe" />
+            <End Role="UsuarioEquipe" EntitySet="UsuarioEquipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegistroDisputa_dbo_EquipeCampeonato_EquipeCampeonato_Id" Association="Self.FK_dbo_RegistroDisputa_dbo_EquipeCampeonato_EquipeCampeonato_Id">
+            <End Role="EquipeCampeonato" EntitySet="EquipeCampeonato" />
+            <End Role="RegistroDisputa" EntitySet="RegistroDisputa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_MembroCampeonato_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_MembroCampeonato_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="MembroCampeonato" EntitySet="MembroCampeonato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegistroDisputa_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_RegistroDisputa_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="RegistroDisputa" EntitySet="RegistroDisputa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UsuarioEquipe_dbo_Usuario_Usuario_Id" Association="Self.FK_dbo_UsuarioEquipe_dbo_Usuario_Usuario_Id">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioEquipe" EntitySet="UsuarioEquipe" />
+          </AssociationSet>
+          <AssociationSet Name="CircuitoCampeonato1" Association="Self.CircuitoCampeonato1">
+            <End Role="Campeonato" EntitySet="Campeonato" />
+            <End Role="Circuito" EntitySet="Circuito" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FormulaIFSModelStoreContainer" CdmEntityContainer="DBModel">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="FormulaIFSModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Campeonato">
+            <EntityTypeMapping TypeName="FormulaIFSModel.Campeonato">
+              <MappingFragment StoreEntitySet="Campeonato">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="TipoCampeonato" ColumnName="TipoCampeonato" />
+                <ScalarProperty Name="QtdVencedor" ColumnName="QtdVencedor" />
+                <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />
+                <ScalarProperty Name="DataFim" ColumnName="DataFim" />
+                <ScalarProperty Name="EhPublico" ColumnName="EhPublico" />
+                <ScalarProperty Name="SituacaoCampeonato" ColumnName="SituacaoCampeonato" />
+                <ScalarProperty Name="Categoria_Id" ColumnName="Categoria_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carro">
+            <EntityTypeMapping TypeName="FormulaIFSModel.Carro">
+              <MappingFragment StoreEntitySet="Carro">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Tag_Id" ColumnName="Tag_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="FormulaIFSModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Ativa" ColumnName="Ativa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Circuito">
+            <EntityTypeMapping TypeName="FormulaIFSModel.Circuito">
+              <MappingFragment StoreEntitySet="Circuito">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Tamanho" ColumnName="Tamanho" />
+                <ScalarProperty Name="Complexidade" ColumnName="Complexidade" />
+                <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CircuitoCampeonato">
+            <EntityTypeMapping TypeName="FormulaIFSModel.CircuitoCampeonato">
+              <MappingFragment StoreEntitySet="CircuitoCampeonato">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TempoMaximoParaConclusao" ColumnName="TempoMaximoParaConclusao" />
+                <ScalarProperty Name="TentativasTreino" ColumnName="TentativasTreino" />
+                <ScalarProperty Name="TentativasDisputa" ColumnName="TentativasDisputa" />
+                <ScalarProperty Name="NumeroVoltasTreino" ColumnName="NumeroVoltasTreino" />
+                <ScalarProperty Name="NumeroVoltasDisputa" ColumnName="NumeroVoltasDisputa" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="Campeonato_Id" ColumnName="Campeonato_Id" />
+                <ScalarProperty Name="Circuito_Id" ColumnName="Circuito_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipe">
+            <EntityTypeMapping TypeName="FormulaIFSModel.Equipe">
+              <MappingFragment StoreEntitySet="Equipe">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Situacao" ColumnName="Situacao" />
+                <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+                <ScalarProperty Name="Carro_Id" ColumnName="Carro_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipeCampeonato">
+            <EntityTypeMapping TypeName="FormulaIFSModel.EquipeCampeonato">
+              <MappingFragment StoreEntitySet="EquipeCampeonato">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Campeonato_Id" ColumnName="Campeonato_Id" />
+                <ScalarProperty Name="Equipe_Id" ColumnName="Equipe_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EtiquetaTag">
+            <EntityTypeMapping TypeName="FormulaIFSModel.EtiquetaTag">
+              <MappingFragment StoreEntitySet="EtiquetaTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MembroCampeonato">
+            <EntityTypeMapping TypeName="FormulaIFSModel.MembroCampeonato">
+              <MappingFragment StoreEntitySet="MembroCampeonato">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Campeonato_Id" ColumnName="Campeonato_Id" />
+                <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroDisputa">
+            <EntityTypeMapping TypeName="FormulaIFSModel.RegistroDisputa">
+              <MappingFragment StoreEntitySet="RegistroDisputa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DataRegistro" ColumnName="DataRegistro" />
+                <ScalarProperty Name="EhTreino" ColumnName="EhTreino" />
+                <ScalarProperty Name="Sequencial" ColumnName="Sequencial" />
+                <ScalarProperty Name="Tempo" ColumnName="Tempo" />
+                <ScalarProperty Name="CircuitoCampeonato_Id" ColumnName="CircuitoCampeonato_Id" />
+                <ScalarProperty Name="EquipeCampeonato_Id" ColumnName="EquipeCampeonato_Id" />
+                <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="FormulaIFSModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Vinculo" ColumnName="Vinculo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioEquipe">
+            <EntityTypeMapping TypeName="FormulaIFSModel.UsuarioEquipe">
+              <MappingFragment StoreEntitySet="UsuarioEquipe">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DataEntrada" ColumnName="DataEntrada" />
+                <ScalarProperty Name="Equipe_Id" ColumnName="Equipe_Id" />
+                <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CircuitoCampeonato1" TypeName="FormulaIFSModel.CircuitoCampeonato1" StoreEntitySet="CircuitoCampeonato1">
+            <EndProperty Name="Campeonato">
+              <ScalarProperty Name="Id" ColumnName="Campeonato_Id" />
+            </EndProperty>
+            <EndProperty Name="Circuito">
+              <ScalarProperty Name="Id" ColumnName="Circuito_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

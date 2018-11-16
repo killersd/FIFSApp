@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FormulaIFSModelStoreContainer" CdmEntityContainer="DBModel">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="FormulaIFSModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Campeonato">
+      <EntityTypeMapping TypeName="FormulaIFSModel.Campeonato">
+        <MappingFragment StoreEntitySet="Campeonato">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="TipoCampeonato" ColumnName="TipoCampeonato" />
+          <ScalarProperty Name="QtdVencedor" ColumnName="QtdVencedor" />
+          <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />
+          <ScalarProperty Name="DataFim" ColumnName="DataFim" />
+          <ScalarProperty Name="EhPublico" ColumnName="EhPublico" />
+          <ScalarProperty Name="SituacaoCampeonato" ColumnName="SituacaoCampeonato" />
+          <ScalarProperty Name="Categoria_Id" ColumnName="Categoria_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carro">
+      <EntityTypeMapping TypeName="FormulaIFSModel.Carro">
+        <MappingFragment StoreEntitySet="Carro">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Tag_Id" ColumnName="Tag_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="FormulaIFSModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Ativa" ColumnName="Ativa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Circuito">
+      <EntityTypeMapping TypeName="FormulaIFSModel.Circuito">
+        <MappingFragment StoreEntitySet="Circuito">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Tamanho" ColumnName="Tamanho" />
+          <ScalarProperty Name="Complexidade" ColumnName="Complexidade" />
+          <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CircuitoCampeonato">
+      <EntityTypeMapping TypeName="FormulaIFSModel.CircuitoCampeonato">
+        <MappingFragment StoreEntitySet="CircuitoCampeonato">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TempoMaximoParaConclusao" ColumnName="TempoMaximoParaConclusao" />
+          <ScalarProperty Name="TentativasTreino" ColumnName="TentativasTreino" />
+          <ScalarProperty Name="TentativasDisputa" ColumnName="TentativasDisputa" />
+          <ScalarProperty Name="NumeroVoltasTreino" ColumnName="NumeroVoltasTreino" />
+          <ScalarProperty Name="NumeroVoltasDisputa" ColumnName="NumeroVoltasDisputa" />
+          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+          <ScalarProperty Name="Campeonato_Id" ColumnName="Campeonato_Id" />
+          <ScalarProperty Name="Circuito_Id" ColumnName="Circuito_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipe">
+      <EntityTypeMapping TypeName="FormulaIFSModel.Equipe">
+        <MappingFragment StoreEntitySet="Equipe">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Situacao" ColumnName="Situacao" />
+          <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+          <ScalarProperty Name="Carro_Id" ColumnName="Carro_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipeCampeonato">
+      <EntityTypeMapping TypeName="FormulaIFSModel.EquipeCampeonato">
+        <MappingFragment StoreEntitySet="EquipeCampeonato">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Campeonato_Id" ColumnName="Campeonato_Id" />
+          <ScalarProperty Name="Equipe_Id" ColumnName="Equipe_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EtiquetaTag">
+      <EntityTypeMapping TypeName="FormulaIFSModel.EtiquetaTag">
+        <MappingFragment StoreEntitySet="EtiquetaTag">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MembroCampeonato">
+      <EntityTypeMapping TypeName="FormulaIFSModel.MembroCampeonato">
+        <MappingFragment StoreEntitySet="MembroCampeonato">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Campeonato_Id" ColumnName="Campeonato_Id" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistroDisputa">
+      <EntityTypeMapping TypeName="FormulaIFSModel.RegistroDisputa">
+        <MappingFragment StoreEntitySet="RegistroDisputa">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DataRegistro" ColumnName="DataRegistro" />
+          <ScalarProperty Name="EhTreino" ColumnName="EhTreino" />
+          <ScalarProperty Name="Sequencial" ColumnName="Sequencial" />
+          <ScalarProperty Name="Tempo" ColumnName="Tempo" />
+          <ScalarProperty Name="CircuitoCampeonato_Id" ColumnName="CircuitoCampeonato_Id" />
+          <ScalarProperty Name="EquipeCampeonato_Id" ColumnName="EquipeCampeonato_Id" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="FormulaIFSModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Vinculo" ColumnName="Vinculo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuarioEquipe">
+      <EntityTypeMapping TypeName="FormulaIFSModel.UsuarioEquipe">
+        <MappingFragment StoreEntitySet="UsuarioEquipe">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DataEntrada" ColumnName="DataEntrada" />
+          <ScalarProperty Name="Equipe_Id" ColumnName="Equipe_Id" />
+          <ScalarProperty Name="Usuario_Id" ColumnName="Usuario_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CircuitoCampeonato1" TypeName="FormulaIFSModel.CircuitoCampeonato1" StoreEntitySet="CircuitoCampeonato1">
+      <EndProperty Name="Campeonato">
+        <ScalarProperty Name="Id" ColumnName="Campeonato_Id" />
+      </EndProperty>
+      <EndProperty Name="Circuito">
+        <ScalarProperty Name="Id" ColumnName="Circuito_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

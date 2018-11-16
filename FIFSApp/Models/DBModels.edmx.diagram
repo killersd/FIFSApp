@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c3fd8b6a0f974d4fbf6a4c3300a0e92f" Name="Diagram1">
+        <EntityTypeShape EntityType="FormulaIFSModel.C__MigrationHistory" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.Campeonato" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.Carro" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.Categoria" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.Circuito" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.CircuitoCampeonato" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.Equipe" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.EquipeCampeonato" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.EtiquetaTag" Width="1.5" PointX="1.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.MembroCampeonato" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.RegistroDisputa" Width="1.5" PointX="9.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.Usuario" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FormulaIFSModel.UsuarioEquipe" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_Campeonato_dbo_Categoria_Categoria_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_CircuitoCampeonato_dbo_Campeonato_Campeonato_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_EquipeCampeonato_dbo_Campeonato_Campeonato_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_MembroCampeonato_dbo_Campeonato_Campeonato_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_Carro_dbo_EtiquetaTag_Tag_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_Equipe_dbo_Carro_Carro_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_CircuitoCampeonato_dbo_Circuito_Circuito_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_RegistroDisputa_dbo_CircuitoCampeonato_CircuitoCampeonato_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_EquipeCampeonato_dbo_Equipe_Equipe_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_UsuarioEquipe_dbo_Equipe_Equipe_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_RegistroDisputa_dbo_EquipeCampeonato_EquipeCampeonato_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_MembroCampeonato_dbo_Usuario_Usuario_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_RegistroDisputa_dbo_Usuario_Usuario_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.FK_dbo_UsuarioEquipe_dbo_Usuario_Usuario_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="FormulaIFSModel.CircuitoCampeonato1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
