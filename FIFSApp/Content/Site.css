@@ -12,9 +12,9 @@
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
-.dl-horizontal dt {
+/*.dl-horizontal dt {
     white-space: normal;
-}
+}*SE DER MERDA DESCOMENTAR AQUI/
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
@@ -23,16 +23,44 @@ textarea {
     max-width: 280px;
 }
 
+/*  styles for validation helpers EU QUE ADICIONEI ESSES CAMPOS*/
+.field-validation-error{
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    color: #b94a48;
+}
+
+input.input-validation-error{
+    border: 1px solid #b94a48;
+}
+
+input[type"checkbox"].input-validation-error{
+    border: 0 none;
+}
+
+.validation-summary-errors{
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display:none;
+}
+/*ATÉ AQUI NÃO TINHA*/
+
 ul.nav.nav-tabs{
 margin : 10px 0px;
 }
 
     ul.nav.nav-tabs li:not(.active) a {
-    background-color:#00ff21
-    currentColor;
+        /*background-color:#00ff21
+        currentColor;*/
+        background-color:#eeeeee ;
+        color: grey;
     }
     ul.nav.nav-tabs li.active a {
-    border-top: 3px solid #00ff21;
+    border-top: 3px solid #16a765/*#00ff21*/;
     }
 
 .loaderbody {

@@ -1,6 +1,5 @@
 ﻿
 @{
-                /**/
 
                 ViewBag.Title = "Index";
 }
@@ -9,6 +8,7 @@
     <li><a data-toggle="tab" href="#primeiraTab">Visualizar</a></li>
     <li class="active"><a data-toggle="tab" href="#segundaTab">Adicionar</a></li>
 </ul>
+
 <div class="tab-content">
     <div id="primeiraTab" class="tab-pane fade in">@Html.Action("ViewAll")</div>
     <div id="segundaTab" class="tab-pane fade in active">@Html.Action("AddOrEdit")</div>

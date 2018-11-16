@@ -21,7 +21,7 @@ function MostrarImagemPrevia(imageUploader, preVisualizacao) {
 
 //função geral jquery ajax post que pode ser usada por qualquer tipo de formulario
 //com ou sem upload de imagem
-function jQueryAjaxPost(form)
+function jQueryAjaxPost(form) 
 {
     $.validator.unobtrusive.parse(form);
     if ($(form).valid())
@@ -32,15 +32,15 @@ function jQueryAjaxPost(form)
             data: new FormData(form),           
             success: function (response) {
                 if (response.success) {
-                    $("#primeiraTab").html(response);
-                    atualizarNovaTabAdd($(form).attr('data_restUrl'), true);
-                    $.notify(response.message, "Successfully")
-                    if (typeof ativarTabelaJQuery !== 'undefined' && $.isFunction(ativarTabelaJQuery)) {
+                    $("#primeiraTab").html(response.html);//ESSE .html que eu nao tinha colocado
+                    atualizarNovaTabAdd($(form).attr('data-restUrl'), true);
+                    $.notify(response.message, "success")
+                    if (typeof ativarTabelaJQuery != 'undefined' && $.isFunction(ativarTabelaJQuery)) {
                         ativarTabelaJQuery();
                     }
                 } else
                 {
-                    $.notify(response.message, "Error")
+                    $.notify(response.message, "error")
                 }              
             }
         }
@@ -61,9 +61,8 @@ function atualizarNovaTabAdd(resetUrl,showViewTab)
         success: function (response) {
             $("#segundaTab").html(response);
             $('ul.nav.nav-tabs a:eq(1)').html('Adicionar');
-            if (showViewTab) {
+            if (showViewTab)
                 $('ul.nav.nav-tabs a:eq(0)').tab('show');
-            }
         }
     });
 }
@@ -74,7 +73,7 @@ function Edit(url) {
         url: url,
         success: function (response) {
             $("#segundaTab").html(response);
-            $('ul.nav.nav-tabs a:eq(1)').html('Editar');            
+            $('ul.nav.nav-tabs a:eq(1)').html('Edit');            
             $('ul.nav.nav-tabs a:eq(1)').tab('show');            
         }
     });

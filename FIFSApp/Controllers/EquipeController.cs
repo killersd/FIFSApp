@@ -16,6 +16,7 @@ namespace FIFSApp.Controllers
         {
             return View();
         }
+
         public ActionResult ViewAll()
         {
             return View(GetAllEquipe());
@@ -29,6 +30,7 @@ namespace FIFSApp.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult AddOrEdit(int id=0)
         {
             Equipe equipe = new Equipe();            
@@ -72,8 +74,8 @@ namespace FIFSApp.Controllers
                     }                    
                 }
                 //return RedirectToAction("Index");
-                return Json(new { success = true, html = ClasseGlobal.RenderRazorViewToString(this, "ViewAll", GetAllEquipe()), message = "Cadastrado com Sucesso!" }, JsonRequestBehavior.AllowGet);
-                //return Json(new { success = true, html = ClasseGlobal.RenderRazorViewToString(this, "ViewAll", GetAllEquipe()), message = "Submited Successfully" }, JsonRequestBehavior.AllowGet);
+                //return Json(new { success = true, html = ClasseGlobal.RenderRazorViewToString(this, "ViewAll", GetAllEquipe()), message = "Cadastrado com Sucesso!" }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true, html = ClasseGlobal.RenderRazorViewToString(this,"ViewAll", GetAllEquipe()), message = "submited successfully" }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
