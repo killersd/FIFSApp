@@ -62,6 +62,7 @@ namespace FIFSApp.Controllers
 
                 using (DBModel db = new DBModel())
                 {
+                   
                     if (equipe.Id == 0)
                     {
                         db.Equipe.Add(equipe);
@@ -71,7 +72,7 @@ namespace FIFSApp.Controllers
                     {
                         db.Entry(equipe).State = EntityState.Modified;
                         db.SaveChanges();
-                    }                    
+                    }                  
                 }
                 //return RedirectToAction("Index");
                 //return Json(new { success = true, html = ClasseGlobal.RenderRazorViewToString(this, "ViewAll", GetAllEquipe()), message = "Cadastrado com Sucesso!" }, JsonRequestBehavior.AllowGet);

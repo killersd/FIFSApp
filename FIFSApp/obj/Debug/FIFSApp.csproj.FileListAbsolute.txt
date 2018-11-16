@@ -197,8 +197,8 @@ C:\Users\Alex e Grace\Desktop\Git\FIFSApp\FIFSApp\bin\pt-br\System.Web.WebPages.
 C:\Users\Alex e Grace\Desktop\Git\FIFSApp\FIFSApp\bin\pt-br\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Alex e Grace\Desktop\Git\FIFSApp\FIFSApp\bin\pt-br\System.Web.WebPages.Razor.resources.dll
 C:\Users\Alex e Grace\Desktop\Git\FIFSApp\FIFSApp\bin\pt-br\System.Web.Optimization.resources.dll
-C:\Users\Alex e Grace\Desktop\Git\FIFSApp\FIFSApp\obj\Debug\FIFSApp.csprojAssemblyReference.cache
 C:\Users\Alex e Grace\Desktop\Git\FIFSApp\FIFSApp\obj\Debug\FIFSApp.csproj.CoreCompileInputs.cache
 C:\Users\Alex e Grace\Desktop\Git\FIFSApp\FIFSApp\obj\Debug\FIFSApp.csproj.CopyComplete
 C:\Users\Alex e Grace\Desktop\Git\FIFSApp\FIFSApp\obj\Debug\FIFSApp.dll
 C:\Users\Alex e Grace\Desktop\Git\FIFSApp\FIFSApp\obj\Debug\FIFSApp.pdb
+C:\Users\Alex e Grace\Desktop\Git\FIFSApp\FIFSApp\obj\Debug\FIFSApp.csprojAssemblyReference.cache
